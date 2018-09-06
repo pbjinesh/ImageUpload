@@ -1,0 +1,1 @@
+export const IMAGE_SELECTED = 'image_selected';

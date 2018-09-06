@@ -1,7 +1,6 @@
 import { combineReducers } from "redux";
-
-import ImageSelectionReducer from "./ImageSelection/ImageSelectionReducer";
+import ImageReducer from "./ImageReducer";
 
 export default combineReducers({
-    imgs: ImageSelectionReducer,
+  imgs: ImageReducer
 });

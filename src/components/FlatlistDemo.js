@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
 import {
   StyleSheet,
   Text,
@@ -32,7 +33,7 @@ class FlatlistDemo extends Component {
       selected: []
     };
     this.state.selected = props.dataSelected;
-    console.log("SELECTED-FLATLIST", props.selected);
+    
   }
 
   renderItem = ({ item, index }) => {
@@ -62,7 +63,8 @@ class FlatlistDemo extends Component {
   }
 }
 const mapStateToProps = state => {
-  return { selected: state.imgs.selected };
+  console.log("SELECTED-FLATLIST", props.email);
+  return { email: state.imgs.email };
 };
 
 export default connect(mapStateToProps)(FlatlistDemo);

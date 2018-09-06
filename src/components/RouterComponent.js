@@ -22,7 +22,7 @@ const RouterComponent = () => {
           component={ImageGallerySelection}
           title="Add Images"
           titleStyle={styles.navigationBarTitleStylePadding}
-          onRight={() => Actions.tripupload()}
+          onRight={() => Actions.home()}
           rightTitle="Done"
         />
         <Scene

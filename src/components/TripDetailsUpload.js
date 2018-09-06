@@ -1,4 +1,10 @@
 import React, { Component } from "react";
+
+import CardViewSection from "./UI/CardViewSection";
+import BoxSection from "./UI/BoxSection";
+import FlatlistDemo from "./FlatlistDemo";
+import { connect } from "react-redux";
+
 import {
   StyleSheet,
   Text,
@@ -8,24 +14,6 @@ import {
   FlatList,
   Dimensions
 } from "react-native";
-import CardViewSection from "./UI/CardViewSection";
-import BoxSection from "./UI/BoxSection";
-import FlatlistDemo from "./FlatlistDemo";
-import { connect } from "react-redux";
-const data = [
-  { key: "A" },
-  { key: "B" },
-  { key: "C" },
-  { key: "D" },
-  { key: "E" },
-  { key: "F" },
-  { key: "G" },
-  { key: "H" },
-  { key: "I" },
-  { key: "J" },
-  { key: "K" },
-  { key: "L" }
-];
 
 const formatData = (data, numColumns) => {
   const numberOfFullRows = Math.floor(data.length / numColumns);
@@ -50,11 +38,8 @@ class TripDetailsUpload extends Component {
       selected: []
     };
     this.state.selected = props.data;
-    console.log("PROPSEMAIL", props.email);
-   
+    console.log("TripDetailsUpload-PROPSEMAILNEW", props.email);
   }
-
- 
 
   async openAndroidDatePicker() {
     try {
@@ -127,6 +112,7 @@ class TripDetailsUpload extends Component {
   }
 }
 const mapStateToProps = state => {
+  
   return {
     email: state.imgs.email
   };

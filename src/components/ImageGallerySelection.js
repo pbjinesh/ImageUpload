@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View, Button } from "react-native";
 import { connect } from "react-redux";
-import { imageSelectionAction } from "../actions/imageSelectionAction";
+import { imageSelected } from "../actions/imageSelectionAction";
 import CameraRollPicker from "react-native-camera-roll-picker";
 
 import { PermissionsAndroid } from "react-native";
 import { Actions } from "react-native-router-flux";
+const mName = "Jinesh";
 class ImageGallerySelection extends Component {
   constructor(props) {
     super(props);
@@ -42,14 +43,11 @@ class ImageGallerySelection extends Component {
       num: num,
       selected: images
     });
-    // console.log("IMAGEGALLERY", this.state.selected);
   }
   onPressNext() {
-    //const data=this.state.selected;
+    this.props.imageSelected(mName); //this.state.selected;
 
-    this.props.imageSelectionAction="pbjinesh@gmail.com";
-    console.log("IMAGEGALLERY", this.state.selected);
-    Actions.tripupload({ data: this.state.selected });
+    //Actions.tripupload({ data: this.state.selected });
   }
   componentDidMount() {
     this.requestCameraPermission();
@@ -92,7 +90,12 @@ class ImageGallerySelection extends Component {
 // const mapStateToProps = state => ({
 //   selected: state.selected
 // });
-const mapStateToProps = state => ({});
+
+const mapStateToProps = state => {
+  return {
+    // email: state.imgs.email
+  };
+};
 
 // const mapDispatchToProps = dispatch => ({
 //   imageSelection: selected => {
@@ -103,7 +106,7 @@ const mapStateToProps = state => ({});
 
 export default connect(
   mapStateToProps,
-  imageSelectionAction
+  { imageSelected }
 )(ImageGallerySelection);
 
 const styles = StyleSheet.create({

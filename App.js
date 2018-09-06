@@ -4,7 +4,7 @@ import RouterComponent from "./src/components/RouterComponent";
 import { Scene, Router } from "react-native-router-flux";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
-import reducers from "./src/reducers";
+import reducers from './src/reducers';
 
 export default class App extends Component {
   render() {
