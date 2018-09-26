@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, View, Button } from "react-native";
+import { StyleSheet, View, Button,DatePickerAndroid } from "react-native";
 import { Actions } from "react-native-router-flux";
 
 export default class Home extends Component {
@@ -8,26 +8,24 @@ export default class Home extends Component {
 
     this.state = {
       num: 12,
-      abc:15
+      abc: 15
     };
-  //  console.log("HOMESTATE", this.state.num);
+    //  console.log("HOMESTATE", this.state.num);
   }
 
   onPressNext() {
     Actions.gallery({passedVal: this.state });
-    
-}
+  }
 
-render(){
-  return (
-    <View style={styles.container}>
-      <Button title="Go to Gallery" onPress={this.onPressNext.bind(this)}  />
-    </View>
-  );
+ 
+  render() {
+    return (
+      <View style={styles.container}>
+        <Button title="Go to Gallery" onPress={this.onPressNext.bind(this)} />
+      </View>
+    );
+  }
 }
-}
-
-
 
 const styles = StyleSheet.create({
   container: {

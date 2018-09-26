@@ -1,28 +1,29 @@
 import React, { Component } from "react";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
+import FastImage from "react-native-fast-image";
 import {
   StyleSheet,
-  Text,
   View,
   FlatList,
   Dimensions,
-  Image
+  TouchableHighlight,
+  Alert
 } from "react-native";
-import { connect } from "react-redux";
-const formatData = (data, numColumns) => {
-  const numberOfFullRows = Math.floor(data.length / numColumns);
 
-  let numberOfElementsLastRow = data.length - numberOfFullRows * numColumns;
-  while (
-    numberOfElementsLastRow !== numColumns &&
-    numberOfElementsLastRow !== 0
-  ) {
-    data.push({ key: `id-${numberOfElementsLastRow}`, empty: true });
-    numberOfElementsLastRow++;
-  }
+// const formatData = (data, numColumns) => {
+//   //const numberOfFullRows = Math.floor(data.length / numColumns);
 
-  return data;
-};
+//   // let numberOfElementsLastRow = data.length - numberOfFullRows * numColumns;
+//   // while (
+//   //   numberOfElementsLastRow !== numColumns &&
+//   //   numberOfElementsLastRow !== 0
+//   // ) {
+//   //   //data.push({ key: `id-${numberOfElementsLastRow}`, empty: true });
+//   //  // numberOfElementsLastRow++;
+//   // }
+
+//   return data;
+// };
 
 const numColumns = 3;
 
@@ -30,10 +31,9 @@ class FlatlistDemo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected: []
+      selected: props.selected
     };
-    this.state.selected = props.dataSelected;
-    
+    // this.state.selected = props.dataSelected;
   }
 
   renderItem = ({ item, index }) => {
@@ -41,45 +41,74 @@ class FlatlistDemo extends Component {
       return <View style={[styles.item, styles.itemInvisible]} />;
     }
     return (
-      <View style={styles.item}>
-        <Image
-          source={{ uri: item.uri }}
+      <TouchableHighlight
+        style={styles.item}
+        underlayColor="#f1f1f1"
+        onLongPress={() => this.removeHandler(index)}
+      >
+        <FastImage
           style={{ width: "100%", height: "100%" }}
+          source={{
+            uri: item.uri,
+            priority: FastImage.priority.normal
+          }}
         />
-      </View>
+      </TouchableHighlight>
     );
   };
+  removeHandler(index) {
+    var newState = {};
+    Alert.alert(
+      "Remove Image",
+      "Are you sure want to remove?",
+      [
+        {
+          text: "Cancel",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel"
+        },
+        {
+          text: "OK",
+          onPress: () => {
+            newState.selected = this.state.selected.slice(0);
+            newState.selected.splice(index, 1);
+
+            this.setState(newState);
+            console.log("NEWSTATE", this.state.selected);
+          }
+        }
+      ],
+      { cancelable: false }
+    );
+  }
 
   render() {
     return (
       <FlatList
-        data={formatData(this.state.selected, numColumns)}
-        style={styles.container}
+        data={this.state.selected}
         renderItem={this.renderItem}
         numColumns={numColumns}
-        keyExtractor={(item, index) => index}
+        keyExtractor={item => item.pid}
       />
     );
   }
 }
 const mapStateToProps = state => {
-  console.log("SELECTED-FLATLIST", props.email);
-  return { email: state.imgs.email };
+  return {
+    selected: state.imgs.selected
+  };
 };
 
 export default connect(mapStateToProps)(FlatlistDemo);
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-
-    margin: 5,
     marginVertical: 0
   },
   item: {
     backgroundColor: "#BCAAA4",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "space-between",
     flex: 1,
     margin: 1,
     height: Dimensions.get("window").width / numColumns

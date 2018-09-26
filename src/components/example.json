@@ -1,0 +1,113 @@
+[
+  {
+    "id": 1,
+    "placetype": "Nature",
+
+    "tags": [
+      {
+        "subid": 1,
+        "placetag": "Beach"
+      },
+      {
+        "subid": 2,
+        "placetag": "Waterfall"
+      },
+      {
+        "subid": 3,
+        "placetag": "Lake/River/Pond"
+      },
+      {
+        "subid": 4,
+        "placetag": "Viewpoints"
+      },
+      {
+        "subid": 5,
+        "placetag": "Desert"
+      },
+      {
+        "subid": 6,
+        "placetag": "Grassland"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "placetype": "Trek/Hike",
+
+    "tags": [
+     
+      {
+        "subid":7,
+        "placetag": "1 Day Trek"
+      },
+      {
+        "subid": 8,
+        "placetag": "Urban Walk"
+      },
+      {
+        "subid": 9,
+        "placetag": "Short Hike"
+      },
+      {
+        "subid": 10,
+        "placetag": "6-10 day trek"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "placetype": "Adventure Activities",
+
+    "tags": [
+      {
+        "subid": 11,
+        "placetag": "Zip Lining"
+      },
+      {
+        "subid": 12,
+        "placetag": "Mountain Cycling"
+      },
+      {
+        "subid": 13,
+        "placetag": "Flying Fox"
+      },
+      {
+        "subid": 14,
+        "placetag": "Rock Climbing"
+      },
+      {
+        "subid": 15,
+        "placetag": "Mountain Biking"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "placetype": "Man Made Structures",
+
+    "tags": [
+      {
+        "subid": 16,
+        "placetag": "Taj Mahal"
+      },
+      {
+        "subid": 17,
+        "placetag": "Hoover Dam"
+      },
+      {
+        "subid": 18,
+        "placetag": "Burj Khalifa"
+      },
+      {
+        "subid": 19,
+        "placetag": "Great Pyramids"
+      },
+      {
+        "subid": 20,
+        
+        "placetag": "Genghis Khan Statue"
+      }
+    ]
+  }
+
+]

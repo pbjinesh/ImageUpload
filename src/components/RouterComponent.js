@@ -5,6 +5,8 @@ import { StyleSheet } from "react-native";
 import Home from "./Home";
 import ImageGallerySelection from "./ImageGallerySelection";
 import TripDetailsUpload from "./TripDetailsUpload";
+import AddTravalourBuddy from "./AddTravalourBuddy";
+import PlaceTagFlatList from "./PlaceTagFlatList";
 
 const RouterComponent = () => {
   return (
@@ -21,18 +23,37 @@ const RouterComponent = () => {
           key="gallery"
           component={ImageGallerySelection}
           title="Add Images"
-          titleStyle={styles.navigationBarTitleStylePadding}
-          onRight={() => Actions.home()}
+          titleStyle={styles.navigationBarTitleStyle}
+          onRight={() => Actions.tripupload()}
           rightTitle="Done"
         />
         <Scene
           key="tripupload"
           component={TripDetailsUpload}
           title="Wadi Rum"
-          titleStyle={styles.navigationBarTitleStylePadding}
+          titleStyle={styles.navigationBarTitleStyle}
           onRight={() => Actions.home()}
           rightTitle="Done"
         />
+
+        <Scene
+          key="addbuddy"
+          component={AddTravalourBuddy}
+          title="Add Travlour Buddies"
+          titleStyle={styles.navigationBarTitleStyle}
+          onRight={() => Actions.tripupload()}
+          rightTitle="Done"
+        />
+        <Scene
+          key="placetag"
+          component={PlaceTagFlatList}
+          title="Pick Tags"
+          titleStyle={styles.navigationBarTitleStyle}
+          onRight={() => Actions.tripupload()}
+          rightTitle="Done"
+        />
+
+       
       </Scene>
     </Router>
   );
@@ -40,17 +61,9 @@ const RouterComponent = () => {
 
 const styles = StyleSheet.create({
   navigationBarTitleStyle: {
-    // centering for Android
     flex: 1,
     textAlign: "center",
-    fontSize: 14
-  },
-  navigationBarTitleStylePadding: {
-    // centering for Android
-    flex: 1,
-    textAlign: "center",
-    fontSize: 14,
-    marginLeft: -30
+    fontSize: 15
   }
 });
 

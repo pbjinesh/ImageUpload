@@ -7,23 +7,20 @@ const CardViewSection = props => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    
     alignItems: "center",
     justifyContent: "flex-start",
     padding: 10,
-    backgroundColor: "#FFF",
-
+    backgroundColor: "#FFF",    
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
-    elevation: 2,
+    elevation: 1,
     position: "relative",
-    margin: 5
-  },
-  textStyle: {
-    color: "#333",
-    fontSize: 14,
-    textAlign: "justify"
-  }
+    marginLeft:10,
+    marginRight:10,
+    marginTop:10
+    },
+
 });
 export default CardViewSection;

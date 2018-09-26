@@ -2,11 +2,12 @@ import React, { Component } from "react";
 import { StyleSheet, Text, View, Button } from "react-native";
 import { connect } from "react-redux";
 import { imageSelected } from "../actions/imageSelectionAction";
+import { bindActionCreators } from "redux";
 import CameraRollPicker from "react-native-camera-roll-picker";
 
 import { PermissionsAndroid } from "react-native";
 import { Actions } from "react-native-router-flux";
-const mName = "Jinesh";
+
 class ImageGallerySelection extends Component {
   constructor(props) {
     super(props);
@@ -43,12 +44,13 @@ class ImageGallerySelection extends Component {
       num: num,
       selected: images
     });
-  }
-  onPressNext() {
-    this.props.imageSelected(mName); //this.state.selected;
 
-    //Actions.tripupload({ data: this.state.selected });
+    this.props.imageSelected(this.state.selected);
+    console.log("SELECTEDIMGS", this.state.selected);
   }
+  // onPressNext() {
+  //   Actions.tripupload({ data: this.state.selected });
+  // }
   componentDidMount() {
     this.requestCameraPermission();
   }
@@ -61,11 +63,6 @@ class ImageGallerySelection extends Component {
             <Text style={styles.bold}> {this.state.num} </Text> images has been
             selected
           </Text>
-          <Button
-            style={{ alignSelf: "flex-end" }}
-            title="Done"
-            onPress={this.onPressNext.bind(this)}
-          />
         </View>
 
         <CameraRollPicker
@@ -75,7 +72,7 @@ class ImageGallerySelection extends Component {
           removeClippedSubviews={false}
           groupTypes="SavedPhotos"
           batchSize={5}
-          maximum={6}
+          maximum={25}
           selected={this.state.selected}
           assetType="Photos"
           imagesPerRow={3}
@@ -92,21 +89,15 @@ class ImageGallerySelection extends Component {
 // });
 
 const mapStateToProps = state => {
-  return {
-    // email: state.imgs.email
-  };
+  return {};
 };
-
-// const mapDispatchToProps = dispatch => ({
-//   imageSelection: selected => {
-//   dispatch(imageSelection(selected));
-
-//   },
-//  });
+const mapDispatchToProps = disaptch => ({
+  ...bindActionCreators({ imageSelected }, disaptch)
+});
 
 export default connect(
   mapStateToProps,
-  { imageSelected }
+  mapDispatchToProps
 )(ImageGallerySelection);
 
 const styles = StyleSheet.create({
@@ -120,7 +111,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     flexWrap: "wrap",
-    backgroundColor: "#E8EAF6"
+    backgroundColor: "transparent"
   },
   text: {
     fontSize: 16,

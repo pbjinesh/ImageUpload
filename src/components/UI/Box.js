@@ -1,14 +1,14 @@
 import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View } from "react-native";
 
-const BoxSection = props => {
+const Box = props => {
   return <View style={styles.boxContainer}>{props.children}</View>;
 };
 
 const styles = StyleSheet.create({
   boxContainer: {
    
-    justifyContent: 'flex-start',
+    justifyContent: 'space-between',
     position: "relative",
     backgroundColor: "#FFF",
     shadowColor: "#cacaca",
@@ -17,8 +17,11 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginRight: 10,
     flexWrap: "wrap",
-    padding: 7,
+    width:'80%',
+
+  
+  
     flexDirection: "row"
   }
 });
-export default BoxSection;
+export default Box;
