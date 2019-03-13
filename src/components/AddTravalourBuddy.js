@@ -13,6 +13,7 @@ import {
   ScrollView
 } from "react-native";
 import axios from "axios";
+const accesstkn="ceyXdlkfjjlkd.didsdfds";
 
 const accessToken =
   "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzZXMiOiJra2pma2dkIiwidWlkIjoiNTUiLCJzdWIiOiJhdXRoLXRva2VuIiwiaXNzIjoidHJhdmFsb3VyIiwiZXhwIjoxNTM3ODg5NTkzLCJpYXQiOjE1Mzc4ODIzOTN9._uuHOCGs4Hg72OWGTMtTffKZd13Va70J9Ma7W9gDc-0";
